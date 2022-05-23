@@ -73,7 +73,7 @@ public class WebController {
         stringBuilder.append(contact.getMessage());
         stringBuilder.append("\n");
 
-        MailHelper.sendTextEmail(stringBuilder.toString(), javaMailSender);
+        MailHelper.sendTextEmail(stringBuilder.toString(), javaMailSender, "Email from your personal website", "taman.neupane@peacenepal.com");
 
         return "redirect:";
     }
