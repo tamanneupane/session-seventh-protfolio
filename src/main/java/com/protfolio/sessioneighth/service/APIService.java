@@ -1,8 +1,10 @@
 package com.protfolio.sessioneighth.service;
 
+import com.protfolio.sessioneighth.exception.ServiceNotFoundException;
 import com.protfolio.sessioneighth.model.ProtfolioService;
 import com.protfolio.sessioneighth.repository.ProtfolioServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -37,11 +39,15 @@ public class APIService {
 
             return protfolioServiceRepository.save(updateableService);
         }else{
-            return null;
+            throw new ServiceNotFoundException("The service you are trying to update is not available");
         }
     }
 
     public void deleteService(Integer id){
-        protfolioServiceRepository.deleteById(id);
+        try{
+            protfolioServiceRepository.deleteById(id);
+        }catch (EmptyResultDataAccessException ex){
+            throw new ServiceNotFoundException("The service you are trying to delete is not available");
+        }
     }
 }

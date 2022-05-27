@@ -1,12 +1,11 @@
 package com.protfolio.sessioneighth.controller;
 
-import com.protfolio.sessioneighth.model.PersonalInfo;
 import com.protfolio.sessioneighth.model.ProtfolioService;
 import com.protfolio.sessioneighth.service.APIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -22,7 +21,7 @@ public class APIController {
     }
 
     @PostMapping(value = "/api/service")
-    public ProtfolioService createService(@RequestBody ProtfolioService protfolioService){
+    public ProtfolioService createService( @RequestBody @Valid  ProtfolioService protfolioService){
         System.out.println(protfolioService);
         return apiService.saveService(protfolioService);
     }

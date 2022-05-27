@@ -3,6 +3,7 @@ package com.protfolio.sessioneighth.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,16 +25,19 @@ public class ProtfolioService implements Comparable<ProtfolioService> {
     @Getter
     @Setter
     @Column(name = "service_name")
+    @NotEmpty(message = "Service name cannot be empty")
     private String serviceName;
 
     @Getter
     @Setter
     @Column(name = "service_description")
+    @NotEmpty(message = "Service description cannot be empty")
     private String serviceDescription;
 
     @Getter
     @Setter
     @Column(name = "service_icon")
+    @NotEmpty(message = "Service icon cannot be empty")
     private String serviceIcon;
 
     @Override
